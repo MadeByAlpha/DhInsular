@@ -46,7 +46,7 @@ import com.oasisfeng.island.data.helper.installed
 import com.oasisfeng.island.data.helper.user
 import com.oasisfeng.island.data.helper.userId
 import com.oasisfeng.island.engine.IslandManager
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.settings.IslandSettings
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.DevicePolicies

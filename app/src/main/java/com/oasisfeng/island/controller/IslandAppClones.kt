@@ -22,6 +22,7 @@ import android.widget.Toast
 import androidx.annotation.IntDef
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.core.content.getSystemService
 import androidx.fragment.app.FragmentActivity
@@ -49,7 +50,7 @@ import com.oasisfeng.island.data.helper.suspended
 import com.oasisfeng.island.engine.IslandManager
 import com.oasisfeng.island.engine.common.WellKnownPackages
 import com.oasisfeng.island.installer.InstallerExtras
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.model.interactive
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.ui.ModelBottomSheetFragment
@@ -112,7 +113,7 @@ class IslandAppClones(val activity: FragmentActivity, val vm: AndroidViewModel, 
 				isShizukuReady -> MODE_SHIZUKU
 				isPlayStoreReady && (isKnownInstalledByPlayStore || ! isInstallerUsable()) -> MODE_PLAY_STORE
 				else -> null }
-			val mode = mutableStateOf(defaultMode)
+			val mode = remember { mutableStateOf(defaultMode) }
 			dialog.compose(showShizuku = isShizukuAvailable, showPlayStore = isPlayStoreAvailable, mode)
 
 			snapshotFlow { mode.value }.onEach {    // When the choice of mode chip is changed

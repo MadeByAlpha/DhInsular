@@ -18,7 +18,7 @@ import com.oasisfeng.android.base.Scopes;
 import com.oasisfeng.common.app.AppListProvider;
 import com.oasisfeng.island.data.IslandAppInfo;
 import com.oasisfeng.island.data.IslandAppListProvider;
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.R;
 import com.oasisfeng.island.model.AppListViewModel;
 import com.oasisfeng.island.model.AppViewModel;
 import com.oasisfeng.island.util.Users;

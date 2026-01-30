@@ -1,19 +1,16 @@
 package com.oasisfeng.island.console.apps
 
-import android.Manifest.permission.MANAGE_EXTERNAL_STORAGE
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.Q
 import android.os.Build.VERSION_CODES.TIRAMISU
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -33,10 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.MutableLiveData
 import com.oasisfeng.android.base.Versions
+import com.oasisfeng.island.R
 import com.oasisfeng.island.util.hasRequestedLegacyExternalStorage
 import com.oasisfeng.island.data.IslandAppInfo
 import com.oasisfeng.island.data.IslandAppListProvider
-import com.oasisfeng.island.mobile.R
 import com.oasisfeng.island.model.AppViewModel
 
 object AppExtraInfo {

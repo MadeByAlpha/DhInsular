@@ -19,12 +19,13 @@
     <uses-permission android:name="android.permission.INTERACT_ACROSS_PROFILES" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <application android:label="Island - Mobile"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme.NoActionBar"
-                 tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+    <application
+            android:label="Island"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <meta-data android:name="android.max_aspect" android:value="2.1" />
         <!-- <meta-data android:name="com.google.android.actions" android:resource="@xml/actions" /> -->
@@ -86,7 +87,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.oasisfeng.island.setup.SetupActivity" android:theme="@style/SetupTheme" />
+        <activity android:name="com.oasisfeng.island.setup.SetupActivity" />
 
         <activity android:name="com.oasisfeng.island.action.FeatureActionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:excludeFromRecents="true" android:exported="true">

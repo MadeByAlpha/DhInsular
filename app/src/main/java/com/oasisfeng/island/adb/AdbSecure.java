@@ -18,7 +18,7 @@ import com.oasisfeng.android.provider.SettingsUtils;
 import com.oasisfeng.android.ui.Snackbars;
 import com.oasisfeng.island.analytics.Analytics;
 import com.oasisfeng.island.data.LiveUserRestriction;
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.R;
 import com.oasisfeng.island.security.SecurityPrompt;
 import com.oasisfeng.island.shuttle.Shuttle;
 import com.oasisfeng.island.util.DevicePolicies;

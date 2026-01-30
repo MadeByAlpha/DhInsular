@@ -7,10 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.contentColorFor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -27,12 +27,12 @@ import androidx.compose.ui.unit.dp
 }
 
 @Composable fun ToggleableChip(label: String, checked: Boolean, onValueChange: (Boolean) -> Unit) {
-    val fillColor = if (checked) MaterialTheme.colors.primary else Color.Transparent
-    val textColor = contentColorFor(if (checked) fillColor else MaterialTheme.colors.background) // contentColorFor() does not work for Color.Transparent
+    val fillColor = if (checked) MaterialTheme.colorScheme.primary else Color.Transparent
+    val textColor = contentColorFor(if (checked) fillColor else MaterialTheme.colorScheme.background) // contentColorFor() does not work for Color.Transparent
 
-    Surface(shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, color = MaterialTheme.colors.primary),
+    Surface(shape = RoundedCornerShape(24.dp), border = BorderStroke(1.dp, color = MaterialTheme.colorScheme.primary),
         modifier = Modifier.padding(8.dp), color = fillColor) {
 
         Row(modifier = Modifier/*.background(fillColor)*/.toggleable(value = checked, onValueChange = onValueChange)) {
-            Text(text = label, color = textColor, style = MaterialTheme.typography.body1, modifier = Modifier.padding(12.dp)) }}
+            Text(text = label, color = textColor, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(12.dp)) }}
 }

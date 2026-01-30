@@ -22,8 +22,8 @@ import com.oasisfeng.android.ui.Dialogs
 import com.oasisfeng.island.Config
 import com.oasisfeng.island.IslandNameManager
 import com.oasisfeng.island.MainActivity
-import com.oasisfeng.island.mobile.BuildConfig
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.BuildConfig
+import com.oasisfeng.island.R
 import com.oasisfeng.island.util.DevicePolicies
 import com.oasisfeng.island.util.Modules
 import com.oasisfeng.island.util.Users

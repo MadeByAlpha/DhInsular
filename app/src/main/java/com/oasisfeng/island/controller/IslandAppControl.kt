@@ -22,7 +22,7 @@ import com.oasisfeng.island.data.IslandAppInfo
 import com.oasisfeng.island.data.helper.AppStateTrackingHelper
 import com.oasisfeng.island.engine.ClonedHiddenSystemApps
 import com.oasisfeng.island.engine.IslandManager
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.model.interactive
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.DevicePolicies

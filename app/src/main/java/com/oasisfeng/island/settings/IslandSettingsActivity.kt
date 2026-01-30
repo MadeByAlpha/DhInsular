@@ -55,8 +55,8 @@ import com.oasisfeng.island.IslandNameManager
 import com.oasisfeng.island.TempDebug
 import com.oasisfeng.island.appops.AppOpsCompat
 import com.oasisfeng.island.data.helper.isSystem
-import com.oasisfeng.island.mobile.BuildConfig
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.BuildConfig
+import com.oasisfeng.island.R
 import com.oasisfeng.island.notification.NotificationIds
 import com.oasisfeng.island.setup.IslandSetup
 import com.oasisfeng.island.util.*

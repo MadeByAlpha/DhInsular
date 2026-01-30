@@ -10,7 +10,7 @@
         <import type="android.view.View" />
         <import type="com.google.android.material.bottomsheet.BottomSheetBehavior" />
         <import type="com.oasisfeng.android.databinding.adapters.BottomSheetBindingAdapter" />
-        <import type="com.oasisfeng.island.mobile.BuildConfig" />
+        <import type="com.oasisfeng.island.BuildConfig" />
         <variable name="apps" type="com.oasisfeng.island.model.AppListViewModel" />
         <variable name="featured" type="com.oasisfeng.island.featured.FeaturedListViewModel" />
         <variable name="card" type="com.oasisfeng.ui.card.CardViewModel" />

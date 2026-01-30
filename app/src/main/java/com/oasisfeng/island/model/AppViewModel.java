@@ -8,8 +8,8 @@ import com.oasisfeng.android.databinding.ObservableSortedList;
 import com.oasisfeng.common.app.BaseAppViewModel;
 import com.oasisfeng.island.data.IslandAppInfo;
 import com.oasisfeng.island.data.IslandAppListProvider;
-import com.oasisfeng.island.mobile.BuildConfig;
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.BuildConfig;
+import com.oasisfeng.island.R;
 import com.oasisfeng.island.util.Users;
 
 import java.util.Comparator;

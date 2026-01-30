@@ -16,7 +16,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.oasisfeng.android.ui.Dialogs
 import com.oasisfeng.island.appops.AppOpsCompat.GET_APP_OPS_STATS
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.settings.IslandSettings.BooleanSetting
 import com.oasisfeng.island.shortcut.IslandAppShortcut
 import com.oasisfeng.island.util.DPM

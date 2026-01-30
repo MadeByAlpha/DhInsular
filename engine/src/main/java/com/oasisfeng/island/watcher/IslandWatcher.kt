@@ -47,6 +47,7 @@ import com.oasisfeng.island.util.Users
 import com.oasisfeng.island.util.Users.Companion.ACTION_USER_INFO_CHANGED
 import com.oasisfeng.island.util.Users.Companion.EXTRA_USER_HANDLE
 import com.oasisfeng.island.util.Users.Companion.toId
+import com.oasisfeng.island.engine.R
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -56,7 +57,8 @@ import kotlinx.coroutines.launch
  *
  * Created by Oasis on 2019-2-25.
  */
-@RequiresApi(P) class IslandWatcher : BroadcastReceiver() {
+@RequiresApi(P)
+class IslandWatcher : BroadcastReceiver() {
 
 	override fun onReceive(context: Context, intent: Intent) {
 		Log.d(TAG, "onReceive: $intent")

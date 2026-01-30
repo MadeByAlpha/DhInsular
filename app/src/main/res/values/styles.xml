@@ -37,17 +37,6 @@
     </style>
 
     <!-- Setup Wizard -->
-    <style name="SetupTheme" parent="SuwThemeMaterial.Light">
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
-        <item name="android:colorAccent">@color/accent</item>
-        <item name="suwLayoutTheme">@style/SetupIllustrationTheme</item>
-    </style>
-    <style name="SetupIllustrationTheme">
-        <item name="suwBackground">@drawable/setup_header</item>
-        <!--<item name="suwIllustrationAspectRatio">2</item>-->
-        <!--<item name="suwIllustration">@drawable/setup_header</item>-->
-        <!--<item name="suwDecorPaddingTop">@dimen/suw_decor_padding_top</item>-->
-    </style>
     <style name="contentContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>

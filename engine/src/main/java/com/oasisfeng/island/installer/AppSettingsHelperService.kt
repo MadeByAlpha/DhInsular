@@ -17,6 +17,7 @@ import com.oasisfeng.island.analytics.analytics
 import com.oasisfeng.island.settings.IslandSettings
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.Users
+import com.oasisfeng.island.engine.R
 
 private const val HELPER_NOTIFICATION_TIMEOUT = 10_000L
 

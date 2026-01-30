@@ -22,6 +22,8 @@ import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.CallerAwareActivity
 import com.oasisfeng.island.util.Users
 import com.oasisfeng.island.util.Users.Companion.isParentProfile
+import com.oasisfeng.island.engine.R
+import kr.alpha93.lyra.android.compat.getExtra
 
 /**
  * Created by Oasis on 2018-11-16.
@@ -31,7 +33,7 @@ class AppInfoForwarderActivity : CallerAwareActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		val intent = intent.setComponent(null).setPackage(null)
-		val user: UserHandle? = intent.getParcelableExtra(Intent.EXTRA_USER)
+		val user: UserHandle? = intent.getExtra(Intent.EXTRA_USER)
 		if (user != null && intent.action == Settings.ACTION_APPLICATION_DETAILS_SETTINGS) {  // For profiles other than default
 			intent.removeExtra(Intent.EXTRA_USER)
 			Shuttle(this, user).launch {

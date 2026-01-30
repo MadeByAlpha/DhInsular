@@ -14,7 +14,7 @@ kotlin {
 }
 
 android {
-    namespace = rootProject.group.toString()
+    namespace = "com.oasisfeng.island"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -31,7 +31,7 @@ android {
         versionName = "5.2.0-SNAPSHOT"
         versionCode = 51508
 
-        applicationId = "kr.alpha93.dhizuku"
+        applicationId = "com.oasisfeng.island"
         //resourceConfigurations += ["en"]
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -73,6 +73,7 @@ android {
 
 dependencies {
     implementation(projects.shared)
+    runtimeOnly(projects.engine)
 
     implementation(libs.kotlinx.coroutines.android)
 

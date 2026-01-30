@@ -10,7 +10,7 @@ import androidx.annotation.StringRes;
 import androidx.biometric.BiometricPrompt;
 import androidx.fragment.app.FragmentActivity;
 
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.R;
 
 /**
  * Security protection based on biometric or lock-screen credentials.

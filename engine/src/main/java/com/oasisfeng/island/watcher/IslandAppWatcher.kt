@@ -28,6 +28,7 @@ import com.oasisfeng.island.notification.post
 import com.oasisfeng.island.util.DPM
 import com.oasisfeng.island.util.DevicePolicies
 import com.oasisfeng.pattern.PseudoContentProvider
+import com.oasisfeng.island.engine.R
 import java.util.*
 
 /**
@@ -35,7 +36,8 @@ import java.util.*
  *
  * Created by Oasis on 2019-2-27.
  */
-@RequiresApi(O) class IslandAppWatcher : BroadcastReceiver() {
+@RequiresApi(O)
+class IslandAppWatcher : BroadcastReceiver() {
 
 	override fun onReceive(context: Context, intent: Intent) {
 		val data = intent.data; val action = intent.action ?: return; val ssp = data?.schemeSpecificPart ?: return

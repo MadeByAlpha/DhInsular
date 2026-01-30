@@ -28,8 +28,8 @@ import com.oasisfeng.android.ui.WebContent;
 import com.oasisfeng.island.Config;
 import com.oasisfeng.island.analytics.Analytics;
 import com.oasisfeng.island.engine.IslandManager;
-import com.oasisfeng.island.mobile.BuildConfig;
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.BuildConfig;
+import com.oasisfeng.island.R;
 import com.oasisfeng.island.util.DeviceAdmins;
 import com.oasisfeng.island.util.DevicePolicies;
 import com.oasisfeng.island.util.Modules;
@@ -44,12 +44,13 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static com.oasisfeng.island.analytics.Analytics.Param.ITEM_ID;
 import static com.oasisfeng.island.analytics.Analytics.Param.ITEM_NAME;
 
+
 /**
  * View model for setup fragment
  *
  * Created by Oasis on 2016/4/19.
  */
-public class SetupViewModel implements Parcelable {
+class SetupViewModel implements Parcelable {
 
 	private static final int REQUEST_PROVISION_MANAGED_PROFILE = 1;
 
@@ -68,8 +69,7 @@ public class SetupViewModel implements Parcelable {
 //		} else { has_other_owner = false; owner_name = null; }
 //	}
 
-	@Nullable SetupViewModel onNavigateNext(final Fragment fragment) {
-		final Activity activity = fragment.getActivity();
+	@Nullable SetupViewModel onNavigateNext(final Activity activity) {
 		if (button_next.get() == R.string.button_setup_troubleshooting) {
 			WebContent.view(activity, Config.URL_SETUP_TROUBLESHOOTING.get());
 			return null;
@@ -77,7 +77,7 @@ public class SetupViewModel implements Parcelable {
 		final SetupViewModel result = checkManagedProvisioningPrerequisites(activity, mIncompleteSetupAcked);
 		if (result != null) return result;
 
-		startManagedProvisioning(fragment);
+		startManagedProvisioning(activity);
 		return null;
 	}
 
@@ -167,11 +167,10 @@ public class SetupViewModel implements Parcelable {
 		return null;
 	}
 
-	private static void startManagedProvisioning(final Fragment fragment) {
-		final Activity activity = fragment.getActivity();
+	private static void startManagedProvisioning(final Activity activity) {
 		final Intent intent = buildManagedProfileProvisioningIntent(activity);
 		try {
-			fragment.startActivityForResult(intent, REQUEST_PROVISION_MANAGED_PROFILE);
+			activity.startActivityForResult(intent, REQUEST_PROVISION_MANAGED_PROFILE);
 			Analytics.$().event("profile_provision_sys_activity_start").send();
 		} catch (final IllegalStateException e) {	// Fragment not in proper state
 			activity.startActivity(intent);				// Fall-back to starting activity without result observation.

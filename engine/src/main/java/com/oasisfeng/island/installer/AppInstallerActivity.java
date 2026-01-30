@@ -74,6 +74,7 @@ import com.oasisfeng.island.util.CallerAwareActivity;
 import com.oasisfeng.island.util.DevicePolicies;
 import com.oasisfeng.island.util.ModuleContext;
 import com.oasisfeng.island.util.Users;
+import com.oasisfeng.island.engine.R;
 import com.oasisfeng.java.utils.IoUtils;
 
 import java.io.File;

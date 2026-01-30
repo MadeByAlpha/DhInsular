@@ -21,6 +21,7 @@ import com.oasisfeng.android.content.IntentCompat
 import com.oasisfeng.island.notification.NotificationIds
 import com.oasisfeng.island.util.Users
 import com.oasisfeng.island.util.hasRequestedLegacyExternalStorage
+import com.oasisfeng.island.engine.R
 
 
 /**

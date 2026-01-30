@@ -15,7 +15,7 @@ import com.oasisfeng.island.IslandNameManager
 import com.oasisfeng.island.analytics.analytics
 import com.oasisfeng.island.data.LiveProfileStates
 import com.oasisfeng.island.data.LiveProfileStates.ProfileState
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.util.Users
 import com.oasisfeng.island.util.Users.Companion.ACTION_USER_INFO_CHANGED
 import com.oasisfeng.island.util.Users.Companion.isParentProfile
@@ -56,7 +56,7 @@ class MainViewModel(app: Application, state: SavedStateHandle): AppListViewModel
 
 	override fun onCleared() {
 		super.onCleared()
-		application.unregisterReceiver(mIslandNameChangeObserver)
+		getApplication<Application>().unregisterReceiver(mIslandNameChangeObserver)
 	}
 
 	private val mIslandNameChangeObserver = receiver { intent ->

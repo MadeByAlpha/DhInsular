@@ -16,7 +16,7 @@ import com.oasisfeng.android.ui.Dialogs
 import com.oasisfeng.android.util.Apps
 import com.oasisfeng.island.appops.AppOpsHelper
 import com.oasisfeng.island.data.helper.hidden
-import com.oasisfeng.island.mobile.R
+import com.oasisfeng.island.R
 import com.oasisfeng.island.util.Hacks
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

@@ -12,7 +12,9 @@ import android.content.pm.PackageInstaller
 import android.os.Bundle
 import android.util.Log
 import com.oasisfeng.island.analytics.Analytics
+import com.oasisfeng.island.engine.BuildConfig
 import com.oasisfeng.island.util.RomVariants.isMiui
+import com.oasisfeng.island.engine.R
 
 class AppInstallerStatusReceiver: BroadcastReceiver() {
 

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.content.getSystemService
 import com.oasisfeng.android.widget.Toasts
 import com.oasisfeng.island.engine.IslandManager
-import com.oasisfeng.island.mobile.BuildConfig
+import com.oasisfeng.island.BuildConfig
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.CallerAwareActivity
 import com.oasisfeng.island.util.Users

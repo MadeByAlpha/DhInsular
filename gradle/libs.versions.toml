@@ -36,6 +36,7 @@ condom = "3.0.0"
 android-library = { id = "com.android.library", version.ref = "android-agp" }
 android-application = { id = "com.android.application", version.ref = "android-agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ext" }
 
 

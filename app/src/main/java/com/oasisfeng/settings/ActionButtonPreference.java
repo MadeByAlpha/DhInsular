@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.R;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;

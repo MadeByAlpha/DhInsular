@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModel;
 import com.oasisfeng.android.ui.IconResizer;
 import com.oasisfeng.androidx.lifecycle.NonNullMutableLiveData;
 import com.oasisfeng.island.IslandApplication;
-import com.oasisfeng.island.mobile.R;
+import com.oasisfeng.island.R;
 
 /**
  * View-model of basic app entry
