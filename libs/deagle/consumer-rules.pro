@@ -1,0 +1,2 @@
+-keep interface * extends com.oasisfeng.hack.Hack$Mirror { *; }
+-keepattributes InnerClasses,Signature,*Annotation*

@@ -1,0 +1,84 @@
+[versions]
+kotlin = "2.3.0"
+lyra = "0.1.2-SNAPSHOT"
+spotbugs = "4.9.8"
+okhttp = "5.3.2"
+
+mockito = "5.21.0"
+junit = "4.13.2"
+idea-ext = "1.4"
+
+compose = "2026.01.00"
+compose-material3-tmp-expressive = "1.5.0-alpha12"
+
+android-agp = "9.0.0"
+android-min = "24"
+android-compile = "36.1"
+
+kotlinx-coroutines = "1.10.2"
+
+androidx = "1.17.0"
+androidx-compat = "1.7.1"
+androidx-lifecycle = "2.10.0"
+androidx-activity = "1.12.2"
+androidx-fragment = "1.8.9"
+androidx-recyclerview = "1.4.0"
+androidx-biometric = "1.4.0-alpha05"
+androidx-browser = "1.9.0"
+androidx-test = "1.7.0"
+
+material = "1.13.0"
+shizuku = "13.1.5"
+condom = "2.5.0"
+
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "android-agp" }
+android-application = { id = "com.android.application", version.ref = "android-agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+idea-ext = { id = "org.jetbrains.gradle.plugin.idea-ext", version.ref = "idea-ext" }
+
+
+[libraries]
+lyra = { group = "kr.alpha93.lyra", name = "android", version.ref = "lyra" }
+
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+androidx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx" }
+androidx-compat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-compat" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidx-fragment" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidx-recyclerview" }
+androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "androidx-biometric" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
+androidx-test = { group = "androidx.test", name = "core", version.ref = "androidx-test" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidx-test" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidx-test" }
+
+compose = { group = "androidx.compose", name = "compose-bom", version.ref = "compose" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose-material3-tmp-expressive" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
+compose-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+compose-biometric = { group = "androidx.biometric", name = "biometric-compose", version.ref = "androidx-biometric" }
+
+spotbugs-annotations = { group = "com.github.spotbugs", name = "spotbugs-annotations", version.ref = "spotbugs" }
+
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-urlconnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
+
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+condom = { group = "com.oasisfeng.condom", name = "library", version.ref = "condom" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+shizuku = { group = "dev.rikka.shizuku", name = "api", version.ref = "shizuku" }
+shizuku-provider = { group = "dev.rikka.shizuku", name = "provider", version.ref = "shizuku" }
+
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockito" }
