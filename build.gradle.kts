@@ -6,3 +6,14 @@ plugins {
     idea
     alias(libs.plugins.idea.ext)
 }
+
+allprojects {
+    apply(plugin = "idea")
+
+    idea {
+        module {
+            isDownloadSources = true
+            isDownloadJavadoc = true
+        }
+    }
+}

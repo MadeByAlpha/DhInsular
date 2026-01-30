@@ -1,20 +1,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="25" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_PROFILES" />
     <uses-permission android:name="android.permission.GET_APP_OPS_STATS" tools:ignore="ProtectedPermissions" /> <!-- AppOpsCompat -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
-    <application android:name="com.oasisfeng.island.IslandApplication" tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
+    <!-- IslandWatcher -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false" />
+    <!-- Installer -->
+    <permission android:name="com.oasisfeng.island.permission.INSTALLER" android:protectionLevel="signature" />
+    <uses-permission android:name="com.oasisfeng.island.permission.INSTALLER" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-        <provider android:name="com.oasisfeng.island.util.Users"
-                  android:initOrder="1000"
-                  android:authorities="${applicationId}.users"
-                  android:directBootAware="true"
-                  android:exported="false" />
+    <application android:name="com.oasisfeng.island.IslandApplication">
+        <provider
+                android:name="com.oasisfeng.island.util.Users"
+                android:authorities="${applicationId}.users"
+                android:initOrder="1000"
+                android:directBootAware="true"
+                android:exported="false"
+                android:enabled="true" />
+        <provider
+                android:name="com.oasisfeng.island.shuttle.ShuttleProvider"
+                android:authorities="${applicationId}.shuttle"
+                android:grantUriPermissions="true"
+                android:directBootAware="true"
+                android:exported="false"
+                android:enabled="true" />
 
         <activity android:name="com.oasisfeng.island.shuttle.ShuttleCarrierActivity"
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -27,10 +40,104 @@
             </intent-filter>
         </activity>
 
-        <provider android:authorities="${applicationId}.shuttle" android:exported="false"
-                  android:name="com.oasisfeng.island.shuttle.ShuttleProvider" android:grantUriPermissions="true"
-                  android:directBootAware="true" />
+        <!-- IslandWatcher -->
+        <provider
+                tools:targetApi="26"
+                android:name=".IslandAppWatcher$AppStateTracker"
+                android:authorities="${applicationId}.watcher"
+                android:directBootAware="true"
+                android:exported="false"
+                android:enabled="@bool/since_api_26" />
+        <service
+                tools:targetApi="28"
+                android:name=".IslandWatcher$IslandDeactivationService"
+                android:foregroundServiceType="shortService"
+                android:directBootAware="true"
+                android:enabled="true" />
 
+        <receiver
+                tools:targetApi="28"
+                android:name=".IslandWatcher"
+                android:directBootAware="true"
+                android:exported="false"
+                android:enabled="@bool/since_api_28">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.USER_INFO_CHANGED" /> <!-- Registered only -->
+                <action android:name="android.app.action.NOTIFICATION_CHANNEL_BLOCK_STATE_CHANGED" />
+                <action android:name="android.app.action.APP_BLOCK_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+                tools:targetApi="26"
+                android:name=".IslandAppWatcher"
+                android:directBootAware="true"
+                android:exported="false"
+                android:enabled="@bool/since_api_26">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Installer -->
+        <activity
+                android:name=".AppInstallerActivity"
+                android:label="@string/app_installer_label"
+                android:configChanges="uiMode|orientation|screenSize|keyboard|keyboardHidden"
+                android:excludeFromRecents="true"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                android:exported="true"
+                android:enabled="true">
+            <intent-filter> <!-- with MIME type -->
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.INSTALL_PACKAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+            <intent-filter> <!-- without MIME type -->
+                <action android:name="android.intent.action.INSTALL_PACKAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="${applicationId}" />
+                <data android:scheme="file" />
+                <data android:scheme="package" />
+                <data android:scheme="content" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".AppInfoForwarderActivity"
+                android:taskAffinity=""
+                android:excludeFromRecents="true"
+                android:relinquishTaskIdentity="true"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                android:exported="true"
+                android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SHOW_APP_INFO" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+                android:name=".AppSettingsHelperService"
+                android:exported="false"
+                android:enabled="true">
+            <meta-data
+                    android:name="key"
+                    android:value="@string/setting_app_settings_helper" />
+
+            <intent-filter>
+                <action android:name="com.oasisfeng.island.PersistentService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+                android:name=".AppInstallerStatusReceiver"
+                android:exported="false"
+                android:enabled="true" />
     </application>
-
 </manifest>
