@@ -8,12 +8,13 @@ mockito = "5.21.0"
 junit = "4.13.2"
 idea-ext = "1.4"
 
-compose = "2026.01.00"
-compose-material3-tmp-expressive = "1.5.0-alpha12"
+compose = "2026.01.01"
+compose-material3-tmp-expressive = "1.5.0-alpha13"
 
 android-agp = "9.0.0"
-android-min = "24"
+android-min = "28"
 android-compile = "36.1"
+jdk = "21"
 
 kotlinx-coroutines = "1.10.2"
 
@@ -29,6 +30,8 @@ androidx-test = "1.7.0"
 
 material = "1.13.0"
 shizuku = "13.1.5"
+dhizuku = "2.5.4"
+hiddenApiBypass = "6.1"
 condom = "3.0.0"
 
 
@@ -53,6 +56,7 @@ androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", versio
 androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidx-recyclerview" }
 androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "androidx-biometric" }
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
@@ -76,10 +80,14 @@ okhttp-urlconnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconne
 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 condom = { group = "com.oasisfeng.condom", name = "library", version.ref = "condom" }
+hiddenApiBypass = { group = "org.lsposed.hiddenapibypass", name = "hiddenapibypass", version.ref = "hiddenApiBypass" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 shizuku = { group = "dev.rikka.shizuku", name = "api", version.ref = "shizuku" }
 shizuku-provider = { group = "dev.rikka.shizuku", name = "provider", version.ref = "shizuku" }
+
+dhizuku = { group = "io.github.iamr0s", name = "Dhizuku-API", version.ref = "dhizuku" }
+dhizuku-server = { group = "io.github.iamr0s", name = "Dhizuku-SERVER_API", version = "0.0.10" }
 
 mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockito" }

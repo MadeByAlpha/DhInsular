@@ -3,29 +3,35 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
 }
 
+val jdkVersion = libs.versions.jdk.get().toInt()
+val minVersion = libs.versions.android.min.get().toInt()
+val compileVersion = libs.versions.android.compile.get().split('.').map(String::toInt)
+
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(jdkVersion)
 }
 
 android {
     namespace = "com.oasisfeng.island.engine"
     compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
+        version = release(compileVersion.first()) {
+            minorApiLevel = compileVersion.getOrNull(1)
+            sdkExtension = compileVersion.getOrNull(2)
         }
     }
 
     defaultConfig {
         minSdk {
-            version = release(27)
+            version = release(minVersion)
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        val versionEnum = JavaVersion.toVersion(jdkVersion)
+        sourceCompatibility = versionEnum
+        targetCompatibility = versionEnum
     }
 
     buildFeatures {
@@ -48,6 +54,8 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines)
     implementation(libs.androidx)   // ShortcutShuttle
+    implementation(libs.dhizuku)
+    implementation(libs.dhizuku.server)
 
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)

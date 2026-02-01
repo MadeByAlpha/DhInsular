@@ -3,8 +3,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val jdkVersion = libs.versions.jdk.get().toInt()
+val minVersion = libs.versions.android.min.get().toInt()
+val compileVersion = libs.versions.android.compile.get().split('.').map(String::toInt)
+
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(jdkVersion)
     compilerOptions {
         optIn.addAll(
             "androidx.compose.material3.ExperimentalMaterial3Api",
@@ -16,19 +20,20 @@ kotlin {
 android {
     namespace = "com.oasisfeng.island"
     compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
+        version = release(compileVersion.first()) {
+            minorApiLevel = compileVersion.getOrNull(1)
+            sdkExtension = compileVersion.getOrNull(2)
         }
     }
 
     defaultConfig {
         minSdk {
-            version = release(27)
+            version = release(minVersion)
         }
         targetSdk {
-            version = release(36)
+            version = release(compileVersion.first())
         }
-        versionName = "5.2.0-SNAPSHOT"
+        versionName = rootProject.version.toString()
         versionCode = 51508
 
         applicationId = "com.oasisfeng.island"
@@ -37,8 +42,9 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        val versionEnum = JavaVersion.toVersion(jdkVersion)
+        sourceCompatibility = versionEnum
+        targetCompatibility = versionEnum
     }
 
     buildFeatures {
@@ -76,7 +82,6 @@ dependencies {
     runtimeOnly(projects.engine)
 
     implementation(libs.kotlinx.coroutines.android)
-
 
     implementation(libs.androidx)
     implementation(libs.androidx.fragment)

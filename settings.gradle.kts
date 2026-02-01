@@ -30,6 +30,7 @@ plugins {
 
 rootProject.name = "dhisular"
 include(":libs:deagle")
+include(":hidden-api")
 include(":shared")
 include(":engine")
 include(":app")
