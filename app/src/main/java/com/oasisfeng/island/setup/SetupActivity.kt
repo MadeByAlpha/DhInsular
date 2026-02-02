@@ -10,7 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.oasisfeng.island.R
-import com.oasisfeng.island.ui.IslandTheme
+import kr.alpha93.dhisular.ui.theme.DhisularTheme
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -19,7 +19,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -158,7 +157,7 @@ class SetupActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     private fun PreviewSetupScreen() {
-        IslandTheme {
+        DhisularTheme {
             SetupScreen(
                 messageCode = 0, // 0이면 Intro, 아니면 Error
                 messageParams = null,

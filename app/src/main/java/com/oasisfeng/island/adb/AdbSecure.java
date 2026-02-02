@@ -46,11 +46,11 @@ public class AdbSecure {
 			} else policies.execute(DevicePolicyManager::addUserRestriction, DISALLOW_DEBUGGING_FEATURES);
 		}
 
-		if (Users.hasProfile() && ! requireNonNull(activity.getSystemService(UserManager.class)).isQuietModeEnabled(Users.profile)) {   // TODO: Support multiple Islands
+		if (Users.hasProfile() && ! requireNonNull(activity.getSystemService(UserManager.class)).isQuietModeEnabled(Users.getProfile())) {   // TODO: Support multiple Islands
 			final Context app_context = activity.getApplicationContext();
 			final boolean enabled;
 			try {
-				enabled = new Shuttle(activity, Users.profile).invoke(context -> {
+				enabled = new Shuttle(activity, Users.getProfile()).invoke(context -> {
 					final DevicePolicies device_policies = new DevicePolicies(context);    // The "policies" instance can not be passed into profile.
 					if (enabling) device_policies.execute(DevicePolicyManager::addUserRestriction, DISALLOW_DEBUGGING_FEATURES);
 					else device_policies.execute(DevicePolicyManager::clearUserRestriction, DISALLOW_DEBUGGING_FEATURES);

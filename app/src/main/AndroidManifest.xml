@@ -29,6 +29,16 @@
         <meta-data android:name="android.max_aspect" android:value="2.1" />
         <!-- <meta-data android:name="com.google.android.actions" android:resource="@xml/actions" /> -->
 
+        <activity
+                android:name="kr.alpha93.dhisular.ui.activity.MainActivity"
+                android:exported="true"
+                android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- windowSoftInputMode="adjustPan" to avoid bottom-sheet hanging in the center of screen when search is finished and IME panel is closed. -->
         <activity android:name="com.oasisfeng.island.MainActivity" android:windowSoftInputMode="adjustPan"
             android:exported="true" android:directBootAware="true">

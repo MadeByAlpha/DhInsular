@@ -9,6 +9,9 @@ val compileVersion = libs.versions.android.compile.get().split('.').map(String::
 
 kotlin {
     jvmToolchain(jdkVersion)
+    compilerOptions.optIn.addAll(
+        "kotlin.contracts.ExperimentalContracts",
+    )
 }
 
 android {

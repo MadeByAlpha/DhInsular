@@ -196,7 +196,7 @@ public class AppListViewModel extends BaseAppListViewModel<AppViewModel> {
 
 		final UserHandle user = savedState.get(Intent.EXTRA_USER);
 		setCurrentProfile(user != null && (Users.isParentProfile(user) || Users.isProfileManagedByIsland(app, user)) ? user
-				: Users.hasProfile() ? Users.profile : Users.getParentProfile());
+				: Users.hasProfile() ? Users.getProfile() : Users.getParentProfile());
 
 		final String filter_text = getQueryText().getValue();
 		if (! TextUtils.isEmpty(filter_text)) onQueryTextSubmit(filter_text);

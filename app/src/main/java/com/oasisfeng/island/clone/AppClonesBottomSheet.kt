@@ -7,7 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,7 +23,7 @@ import com.oasisfeng.android.os.UserHandles
 import com.oasisfeng.island.controller.IslandAppClones
 import com.oasisfeng.island.controller.IslandAppClones.Companion.AppCloneMode
 import com.oasisfeng.island.R
-import com.oasisfeng.island.ui.IslandTheme
+import kr.alpha93.dhisular.ui.theme.DhisularTheme
 import com.oasisfeng.island.ui.MutexChipGroup
 
 class AppClonesBottomSheet(
@@ -38,7 +37,7 @@ class AppClonesBottomSheet(
     fun compose(showShizuku: Boolean, showPlayStore: Boolean, mode: MutableState<Int?>) {
         val selectedMode: MutableState<Int?> = rememberSaveable { mode }
 
-        IslandTheme { Column(modifier = Modifier.padding(16.dp)) {
+        DhisularTheme { Column(modifier = Modifier.padding(16.dp)) {
             if (showShizuku || showPlayStore) {
                 MutexChipGroup(ArrayList<Pair<String, Int>>(2).apply {
                     if (showShizuku) {

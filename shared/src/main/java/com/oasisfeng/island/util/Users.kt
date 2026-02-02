@@ -23,6 +23,7 @@ import com.oasisfeng.island.home.HomeRole
 import com.oasisfeng.pattern.PseudoContentProvider
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlin.contracts.contract
 import kotlin.coroutines.resume
 
 /**
@@ -55,9 +56,18 @@ class Users : PseudoContentProvider() {
 		const val ACTION_USER_INFO_CHANGED = "android.intent.action.USER_INFO_CHANGED"  // Hidden in Intent
 		const val EXTRA_USER_HANDLE = "android.intent.extra.user_handle"                // Hidden in Intent
 
-		@JvmField var profile: UserHandle? = null // The first profile managed by Island (semi-immutable, until profile is created or destroyed)
-		@JvmStatic lateinit var parentProfile: UserHandle; private set
-		@JvmStatic fun hasProfile() = profile != null
+        /**
+         * The first profile managed by Island (semi-immutable, until profile is created or destroyed)
+         */
+        @JvmStatic
+        var profile: UserHandle? = null
+            private set
+
+		@JvmStatic
+        lateinit var parentProfile: UserHandle; private set
+
+		@JvmStatic
+        fun hasProfile(): Boolean = profile != null
 
 		private val CURRENT: UserHandle = Process.myUserHandle()
 		private val CURRENT_ID = CURRENT.toId()

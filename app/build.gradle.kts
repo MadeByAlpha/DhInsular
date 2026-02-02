@@ -9,12 +9,11 @@ val compileVersion = libs.versions.android.compile.get().split('.').map(String::
 
 kotlin {
     jvmToolchain(jdkVersion)
-    compilerOptions {
-        optIn.addAll(
-            "androidx.compose.material3.ExperimentalMaterial3Api",
-            "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
-        )
-    }
+    compilerOptions.optIn.addAll(
+        "kotlin.contracts.ExperimentalContracts",
+        "androidx.compose.material3.ExperimentalMaterial3Api",
+        "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
+    )
 }
 
 android {
@@ -97,7 +96,10 @@ dependencies {
     implementation(libs.compose.runtime.livedata)
     implementation(libs.compose.material3)
     implementation(libs.compose.activity)
+    implementation(libs.compose.navigation)
     implementation(libs.compose.lifecycle.viewmodel)
+
+    implementation(libs.accompanist.drawable)
 
     implementation(libs.material)
     implementation("eu.chainfire:libsuperuser:1.1.1")   // TODO: Migrate into com.github.topjohnwu.libsu
