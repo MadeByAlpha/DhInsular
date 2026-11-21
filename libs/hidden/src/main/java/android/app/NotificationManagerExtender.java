@@ -1,9 +1,7 @@
 package android.app;
 
 import android.content.Context;
-import android.os.Handler;
 import android.service.notification.StatusBarNotification;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 

@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    compileOnly project(":hidden")
     api project(':deagle')
     api libs.annotations.spotbugs
     implementation libs.annotations.jetbrains

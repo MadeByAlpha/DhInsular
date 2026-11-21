@@ -9,15 +9,18 @@ plugins {
     alias(libs.plugins.kotlin.plugin.compose) apply false
 }
 
+// TODO: Remove this
+val compileSdkVersion = libs.versions.android.sdk.compile.get().toInt()
+val minimumSdkVersion = libs.versions.android.sdk.minimum.get().toInt()
 allprojects {
-    extra["compileSdkVersion"] = 35
-    extra["minSdkVersion"] = 27
+    extra["compileSdkVersion"] = compileSdkVersion
+    extra["minSdkVersion"] = minimumSdkVersion
 }
 
 // Read by the build script of the "libs/deagle" submodule, which is not covered by the version catalog.
 project(":deagle").extra["kotlin_version"] = libs.versions.kotlin.get()
 
-// FIXME: External library with compileSdk 26, which requires the Java 8 source level that was the default before AGP 9.
+// TODO: External library with compileSdk 26, which requires the Java 8 source level that was the default before AGP 9.
 project(":setup-wizard-lib") {
     plugins.withId("com.android.library") {
         extensions.configure<com.android.build.api.dsl.LibraryExtension> {

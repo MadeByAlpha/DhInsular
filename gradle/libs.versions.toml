@@ -1,5 +1,9 @@
 [versions]
-agp = "9.5.2"
+android-agp = "9.5.2"
+android-jdk = "8"
+android-sdk-minimum = "27"
+android-sdk-compile = "36"
+
 kotlin = "2.4.21"
 
 kotlinx-coroutines = "1.7.3"
@@ -40,9 +44,9 @@ legacy-test-androidx-test = "1.3.0"
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
-android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
-android-builtInKotlin = { id = "com.android.built-in-kotlin", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "android-agp" }
+android-library = { id = "com.android.library", version.ref = "android-agp" }
+android-builtInKotlin = { id = "com.android.built-in-kotlin", version.ref = "android-agp" }
 
 
 [libraries]
