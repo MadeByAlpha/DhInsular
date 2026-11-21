@@ -21,14 +21,6 @@ Controller (DPC) of an Android Work Profile, so no external MDM is required.
 
 ## 3. Structure
 
-Current:
-
-```
-app ──▶ engine ──▶ shared ──▶ hidden (compileOnly)
-```
-
-Target (after step 6): `engine` and `shared` are merged last, under the name `shared`.
-
 ```
 app ──▶ shared ──▶ hidden (compileOnly)
 ```
@@ -39,14 +31,6 @@ app ──▶ shared ──▶ hidden (compileOnly)
 | `shared` | DPC backend: `DevicePolicies`, `Users`, Shuttle, provisioning, public intent API, `AppSettings`, watcher, APK installer, external app requests (`open`) | Layout and Compose UI. Deagle-based UI (`Dialogs`, `Toasts`, ...) is allowed |
 | `app` | Frontend: all layout/Compose UI, setup wizard, shortcuts, settings. Owns signing, version, ProGuard, app resources | DPC logic (see 5.1) |
 
-Remaining modules, absorbed into `shared` before the final `engine` + `shared` merge. None of them depends on the `engine` module (only `engine` depends on `shared`, never the reverse); `installer` imports `island.engine.IslandManager`, but that class is physically in `shared`, only its package name says `engine`. Indirect references were checked too and found none: all 4 AIDL files are in `shared`; resources the three modules use but do not define (`accent`, `primary`, `since_api_*`, `ic_landscape_black_24dp`, ...) come from `shared`, never `engine`; no `Class.forName`/`ServiceLoader`/class-name strings point into `engine`; their manifests and ProGuard reference no `engine` component; `engine` does not reference them either. The only runtime links are intent actions (`PersistentService`, `BIND_SYSTEM_SERVICE`). The rule for a new module: if it depends on `engine`, merge it into `engine` first.
-
-| Module | Files | Notes |
-|---|---|---|
-| `engine` | 42 | DPC core. Merged with `shared` last |
-| `shared` | 76 | Old base library |
-
-Resource names do not collide between these modules.
 
 ## 4. Build
 
@@ -67,9 +51,9 @@ Resource names do not collide between these modules.
 | Contract | Producer | Consumer | Purpose |
 |---|---|---|---|
 | `Modules.MODULE_ENGINE` | n/a | `DevicePolicies`, `DeviceAdmins`, `MainActivity` | Hard-coded package name of the DPC |
-| `CATEGORY_PARENT_PROFILE` / `CATEGORY_MANAGED_PROFILE` | `app` (`MainActivity`) | `engine` (`IslandProvisioning`) | The backend launches the UI without knowing it |
-| `PersistentService.SERVICE_INTERFACE` | `app`, `shared` (installer) | `engine` (`IslandPersistentService`) | Plug-in style long-running services, same UID only |
-| `Api` actions (`FREEZE`, `LAUNCH`, ...) | external apps | `engine` (`ApiActivity`, `ApiReceiver`) | Public intent API, guarded by `FREEZE_PACKAGE`, `LAUNCH_PACKAGE`, `SUSPEND_PACKAGE` |
+| `CATEGORY_PARENT_PROFILE` / `CATEGORY_MANAGED_PROFILE` | `app` (`MainActivity`) | `shared` (`IslandProvisioning`) | The backend launches the UI without knowing it |
+| `PersistentService.SERVICE_INTERFACE` | `app`, `shared` (installer) | `shared` (`IslandPersistentService`) | Plug-in style long-running services, same UID only |
+| `Api` actions (`FREEZE`, `LAUNCH`, ...) | external apps | `shared` (`ApiActivity`, `ApiReceiver`) | Public intent API, guarded by `FREEZE_PACKAGE`, `LAUNCH_PACKAGE`, `SUSPEND_PACKAGE` |
 | `Shuttle` / `ShuttleProvider` + 4 AIDL | `shared` | `app` | Cross-profile RPC |
 
 ## 6. Known problems
@@ -140,7 +124,7 @@ Each step ends with a full build.
 | 3 | Merge `watcher` into `shared` | Done |
 | 4 | Merge `installer` into `shared`; replace `dialog_checkbox.xml` with a code-built `CheckBox` | Done |
 | 5 | Merge `open` into `shared` as package `open`. Check manifest and ProGuard; `SystemServiceBridge` keeps its separate process | Done |
-| 6 | Fold `shared` and `engine` into one module named `shared` | Next |
+| 6 | Fold `shared` and `engine` into one module named `shared` | Done |
 | 7 | Move single-user classes (6.2) into `app`; replace string couplings (6.4) with compile-checked references; fix package names and the `app` namespace (6.3); drop duplicate Java/Kotlin pairs (6.6) | Pending |
 | 8 | Introduce the backend facade and move DPC calls out of `app`, one facade at a time: state queries, app control, security and permissions, profile lifecycle. This is the real refactor | Pending |
 | 9 | Write the GitHub Actions workflow (build, signing from secrets) and the UI-free check for `shared/src` (rule 7.2) | Pending |

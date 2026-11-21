@@ -64,7 +64,7 @@ import com.oasisfeng.island.api.Api;
 import com.oasisfeng.island.appops.AppOpsCompat;
 import com.oasisfeng.island.engine.CrossProfile;
 import com.oasisfeng.island.engine.IslandManager;
-import com.oasisfeng.island.engine.R;
+import com.oasisfeng.island.shared.R;
 import com.oasisfeng.island.notification.NotificationIds;
 import com.oasisfeng.island.shuttle.ShuttleProvider;
 import com.oasisfeng.island.util.DevicePolicies;

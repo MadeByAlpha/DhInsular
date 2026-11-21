@@ -1,7 +1,7 @@
 package com.oasisfeng.island.provisioning;
 
 import com.oasisfeng.android.os.Loopers;
-import com.oasisfeng.island.engine.BuildConfig;
+import com.oasisfeng.island.shared.BuildConfig;
 import com.oasisfeng.island.util.DevicePolicies;
 import com.oasisfeng.island.util.ProfileUser;
 import com.oasisfeng.island.util.Users;

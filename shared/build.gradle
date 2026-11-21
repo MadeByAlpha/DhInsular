@@ -64,4 +64,6 @@ dependencies {
     androidTestImplementation libs.test.androidx.test.legacy
     androidTestImplementation libs.test.androidx.test.runner.legacy
     androidTestImplementation libs.test.androidx.test.rules.legacy
+    androidTestImplementation libs.test.androidx.test.runner
+    androidTestImplementation libs.test.androidx.test.rules
 }

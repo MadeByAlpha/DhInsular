@@ -35,7 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import com.oasisfeng.island.analytics.Analytics;
-import com.oasisfeng.island.engine.R;
+import com.oasisfeng.island.shared.R;
 import com.oasisfeng.island.util.DevicePolicies;
 import com.oasisfeng.island.util.PackageManagerWrapper;
 

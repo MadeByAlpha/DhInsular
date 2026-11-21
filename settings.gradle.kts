@@ -29,7 +29,7 @@ includeProject(":setup-wizard-lib") {
 }
 
 includeProject(":hidden") { projectDir = file("libs/hidden") }
-include("shared", "engine")
+include("shared")
 include("app")
 
 // <editor-fold defaultstate="collapsed" desc="fun includeProject(...)">
