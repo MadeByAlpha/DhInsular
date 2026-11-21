@@ -54,7 +54,7 @@ import android.os.Process;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -70,6 +70,7 @@ import com.oasisfeng.island.Config;
 import com.oasisfeng.island.analytics.Analytics;
 import com.oasisfeng.island.appops.AppOpsCompat;
 import com.oasisfeng.island.analyzer.ApkAnalyzer;
+import com.oasisfeng.island.shared.R;
 import com.oasisfeng.island.util.CallerAwareActivity;
 import com.oasisfeng.island.util.DevicePolicies;
 import com.oasisfeng.island.util.ModuleContext;
@@ -220,9 +221,17 @@ public class AppInstallerActivity extends CallerAwareActivity {
 		final String message = getString(install.getMode() == CLONE ? R.string.confirm_cloning : install.getMode() == UPDATE
 				? R.string.confirm_updating : R.string.confirm_installing, install.getCallerLabel(), install.getAppLabel());
 		final Dialogs.Builder dialog = Dialogs.buildAlert(this, null, message);
-		final View view = View.inflate(dialog.getContext()/* For consistent styling */, R.layout.dialog_checkbox, null);
-		final CheckBox checkbox = view.findViewById(R.id.checkbox);
+		final Context dialog_context = dialog.getContext();	// For consistent styling
+		final float density = dialog_context.getResources().getDisplayMetrics().density;
+		final CheckBox checkbox = new CheckBox(dialog_context);
+		checkbox.setTextAppearance(android.R.style.TextAppearance_Material_Widget);
 		checkbox.setText(getString(R.string.dialog_install_checkbox_always_allow));
+		final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+		params.topMargin = (int) (18 * density);
+		params.setMarginStart((int) (20 * density));
+		params.setMarginEnd((int) (20 * density));
+		final FrameLayout view = new FrameLayout(dialog_context);
+		view.addView(checkbox, params);
 		dialog.withCancelButton().withOkButton(() -> {
 			if (checkbox.isChecked()) addAlwaysAllowedCallerPackage(install.getCaller());
 			performInstall(data, null);

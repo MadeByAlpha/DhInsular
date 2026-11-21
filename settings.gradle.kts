@@ -30,7 +30,7 @@ includeProject(":setup-wizard-lib") {
 
 includeProject(":hidden") { projectDir = file("libs/hidden") }
 include("shared", "engine", "open")
-include("app", "installer")
+include("app")
 
 // <editor-fold defaultstate="collapsed" desc="fun includeProject(...)">
 inline fun includeProject(projectPath: String, block: ProjectDescriptor.() -> Unit = {}) {

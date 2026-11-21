@@ -12,6 +12,8 @@ import android.content.pm.PackageInstaller
 import android.os.Bundle
 import android.util.Log
 import com.oasisfeng.island.analytics.Analytics
+import com.oasisfeng.island.shared.BuildConfig
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.util.RomVariants.isMiui
 
 class AppInstallerStatusReceiver: BroadcastReceiver() {

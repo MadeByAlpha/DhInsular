@@ -68,7 +68,6 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":deagle"))
     implementation(project(":engine"))
-    implementation(project(":installer"))
     implementation(project(":open"))
 
     implementation(libs.kotlin.stdlib.jdk8)

@@ -15,6 +15,7 @@ import com.oasisfeng.android.os.UserHandles
 import com.oasisfeng.android.util.Apps
 import com.oasisfeng.island.analytics.analytics
 import com.oasisfeng.island.settings.IslandSettings
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.Users
 

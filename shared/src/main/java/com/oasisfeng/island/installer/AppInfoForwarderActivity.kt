@@ -17,6 +17,7 @@ import android.text.TextUtils
 import android.util.Log
 import com.oasisfeng.android.content.IntentCompat
 import com.oasisfeng.android.util.Apps
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.shuttle.ActivityShuttle
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.CallerAwareActivity
