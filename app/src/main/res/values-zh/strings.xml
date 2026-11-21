@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">炼妖壶</string>
     <string name="label_searchable">炼妖壶中的应用</string>
     <string name="label_activity_island_settings">炼妖壶设置</string>
 

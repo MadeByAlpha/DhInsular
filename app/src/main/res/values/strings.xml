@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Insular</string>
     <string name="label_searchable">Apps in Island</string>
     <string name="label_activity_island_settings">Island Settings</string>
 
