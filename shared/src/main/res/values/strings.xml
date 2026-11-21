@@ -80,4 +80,12 @@
 
     <string name="dialog_clone_no_installer_explanation">Sorry, this version variant of Island is not allowed to install (or clone) apps outside the system app store. Please refer to the FAQ for solutions.</string>
     <string name="prompt_miui_optimization">This might be caused by "MIUI optimization", which can be disabled in system "Settings - Developer options".</string>
+
+    <string name="notification_delegated_scope_auth_title">Authorization request from %s</string>
+    <string name="prompt_unblock_notification_for_auth_request">Unblock notifications to show authorization request</string>
+    <string name="notification_delegated_scope_auth_text">Allow it to %s, at any time?</string>
+    <string name="action_authorize">Authorize</string>
+    <string name="label_delegation_package_access">freeze and unfreeze apps</string>
+    <string name="label_delegation_permission_grant">control runtime permission for apps (include locking)</string>
+    <string name="label_delegation_app_ops">manage app ops (permission restrictions)</string>
 </resources>

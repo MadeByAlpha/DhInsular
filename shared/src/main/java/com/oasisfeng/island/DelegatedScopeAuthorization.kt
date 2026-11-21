@@ -29,8 +29,8 @@ import android.widget.Toast
 import com.oasisfeng.android.os.UserHandles
 import com.oasisfeng.android.util.Apps
 import com.oasisfeng.island.notification.NotificationIds
-import com.oasisfeng.island.open.BuildConfig
-import com.oasisfeng.island.open.R
+import com.oasisfeng.island.shared.BuildConfig
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.util.DevicePolicies
 import com.oasisfeng.pattern.PseudoContentProvider
 

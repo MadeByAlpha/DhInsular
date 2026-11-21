@@ -24,7 +24,7 @@ Controller (DPC) of an Android Work Profile, so no external MDM is required.
 Current:
 
 ```
-app ──▶ engine, open ──▶ shared ──▶ hidden (compileOnly)
+app ──▶ engine ──▶ shared ──▶ hidden (compileOnly)
 ```
 
 Target (after step 6): `engine` and `shared` are merged last, under the name `shared`.
@@ -43,7 +43,6 @@ Remaining modules, absorbed into `shared` before the final `engine` + `shared` m
 
 | Module | Files | Notes |
 |---|---|---|
-| `open` | 15 | Becomes package `open`. All backend (binder proxies, delegation). `SystemServiceBridge` process isolation is a manifest attribute, unaffected by the merge |
 | `engine` | 42 | DPC core. Merged with `shared` last |
 | `shared` | 76 | Old base library |
 
@@ -71,7 +70,7 @@ Resource names do not collide between these modules.
 | `CATEGORY_PARENT_PROFILE` / `CATEGORY_MANAGED_PROFILE` | `app` (`MainActivity`) | `engine` (`IslandProvisioning`) | The backend launches the UI without knowing it |
 | `PersistentService.SERVICE_INTERFACE` | `app`, `shared` (installer) | `engine` (`IslandPersistentService`) | Plug-in style long-running services, same UID only |
 | `Api` actions (`FREEZE`, `LAUNCH`, ...) | external apps | `engine` (`ApiActivity`, `ApiReceiver`) | Public intent API, guarded by `FREEZE_PACKAGE`, `LAUNCH_PACKAGE`, `SUSPEND_PACKAGE` |
-| `Shuttle` / `ShuttleProvider` + 4 AIDL | `shared` | `app`, `open` | Cross-profile RPC |
+| `Shuttle` / `ShuttleProvider` + 4 AIDL | `shared` | `app` | Cross-profile RPC |
 
 ## 6. Known problems
 
@@ -140,8 +139,8 @@ Each step ends with a full build.
 | 2 | Collect hidden API classes into `hidden` | Done |
 | 3 | Merge `watcher` into `shared` | Done |
 | 4 | Merge `installer` into `shared`; replace `dialog_checkbox.xml` with a code-built `CheckBox` | Done |
-| 5 | Merge `open` into `shared` as package `open`. Check manifest and ProGuard; `SystemServiceBridge` keeps its separate process | Next |
-| 6 | Fold `shared` and `engine` into one module named `shared` | Pending |
+| 5 | Merge `open` into `shared` as package `open`. Check manifest and ProGuard; `SystemServiceBridge` keeps its separate process | Done |
+| 6 | Fold `shared` and `engine` into one module named `shared` | Next |
 | 7 | Move single-user classes (6.2) into `app`; replace string couplings (6.4) with compile-checked references; fix package names and the `app` namespace (6.3); drop duplicate Java/Kotlin pairs (6.6) | Pending |
 | 8 | Introduce the backend facade and move DPC calls out of `app`, one facade at a time: state queries, app control, security and permissions, profile lifecycle. This is the real refactor | Pending |
 | 9 | Write the GitHub Actions workflow (build, signing from secrets) and the UI-free check for `shared/src` (rule 7.2) | Pending |
