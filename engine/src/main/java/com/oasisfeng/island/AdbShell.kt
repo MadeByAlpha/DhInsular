@@ -30,18 +30,30 @@ const val EXCLUDED_ACCOUNT_TYPES_FOR_DEBUG = "com.google"
 object AdbShell {
 
     @JvmStatic fun main(args: Array<String>) {
-        if (Process.myUid() != 2000/* Process.SHELL_UID */) return System.err.println("Not running in ADB shell, exit now.")
+        if (Process.myUid() != Process.SHELL_UID && Process.myUid() != Process.ROOT_UID)
+            return System.err.println("Not running in ADB shell, exit now.")
         Thread.setDefaultUncaughtExceptionHandler { t, e -> System.err.println("\n$t"); e.printStackTrace() }
 
-        when(if (args.isEmpty()) "" else args[0]) {
+        when (if (args.isEmpty()) "" else args[0]) {
             "remove-account" -> runBlocking { if (args.size > 1) runRemoveAccount(args[1]) else runRemoveAllAccounts() }
             "remove-user" -> runRemoveNonPrimaryUsers(if (args.size <= 1) null else (args[1].toIntOrNull() ?: return help()))
+            "remove-do-restriction" -> runRemoveDoRestriction(if (args.size <= 1) null else (args[1].toIntOrNull() ?: return help()))
             else -> help()
         }
     }
 
     private fun help() {
         println("Usage: AdbShell -h | remove-account [<account type>:[<account name>]] | remove-user [user ID]")
+    }
+
+    private fun runRemoveDoRestriction(userId: Int?) {
+        val service = Hacks.UserManager_mService.get(shellContext.getSystemService(USER_SERVICE) as UserManager)
+        val setUserRestriction = service.javaClass.getMethod("setUserRestriction",
+            String::class.java, Boolean::class.javaPrimitiveType, Int::class.javaPrimitiveType)
+        setUserRestriction.invoke(service, "no_add_managed_profile", false, userId ?: 0)
+//        val dpm = Hack.into(shellContext.getSystemService(Context.DEVICE_POLICY_SERVICE) as android.app.admin.DevicePolicyManager).with(Hacks.DevicePolicyManagerHack::class.java)
+//        val componentName = shellContext.packageManager.getPackageInfo("com.oasisfeng.island", 0).applicationInfo?.let { android.content.ComponentName(it.packageName, "com.oasisfeng.island.admin.DeviceAdminReceiver") }
+//        dpm.setDeviceOwner(componentName, userId ?: 0)
     }
 
     private fun runRemoveNonPrimaryUsers(userId: Int?) {

@@ -76,6 +76,8 @@ public class Hacks {
 			.staticField("PRINT_SPOOLER_PACKAGE_NAME").fallbackTo("com.android.printspooler");
 	public static final Hack.HackedField<PowerManager, Object>
 			PowerManager_mService = Hack.into(PowerManager.class).field("mService").fallbackTo(null);
+	public static final Hack.HackedField<UserManager, Object>
+			UserManager_mService = Hack.into(UserManager.class).field("mService").fallbackTo(null);
 	public static final Hack.HackedField<AppWidgetProviderInfo, ActivityInfo>
 			AppWidgetProviderInfo_providerInfo = Hack.onlyIf(SDK_INT < S).into(AppWidgetProviderInfo.class)
 			.field("providerInfo").fallbackTo(null);
