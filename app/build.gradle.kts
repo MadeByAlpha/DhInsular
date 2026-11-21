@@ -12,7 +12,8 @@ android {
     defaultConfig {
         applicationId = "com.oasisfeng.island"
         minSdk = libs.versions.android.sdk.minimum.get().toInt()
-        targetSdk = libs.versions.android.sdk.compile.get().toInt()
+        // TODO: https://developer.android.com/about/versions/15/behavior-changes-15#window-insets
+        targetSdk = 34 //libs.versions.android.sdk.compile.get().toInt()
         versionCode = rootProject.property("version.code").toString().toInt()
         versionName = rootProject.version.toString()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
