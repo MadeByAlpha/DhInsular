@@ -6,9 +6,30 @@ pluginManagement {
     }
 }
 
+dependencyResolutionManagement @Suppress("UnstableApiUsage") {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven("https://jitpack.io") { name = "Jitpack" }    // libsuperuser
+        google()
+    }
+}
+
 include("shared", "engine", "app", "installer", "watcher", "open")
-include(":deagle")
-project(":deagle").projectDir = file("libs/deagle/library")
-include(":setup-wizard-lib")
-project(":setup-wizard-lib").projectDir = file("libs/setup-wizard/library")
-project(":setup-wizard-lib").buildFileName = "standalone.gradle"
+
+includeProject(":deagle") {
+    projectDir = file("libs/deagle/library")
+}
+
+includeProject(":setup-wizard-lib") {
+    projectDir = file("libs/setup-wizard/library")
+    buildFileName = "standalone.gradle"
+}
+
+// <editor-fold defaultstate="collapsed" desc="fun includeProject(...)">
+inline fun includeProject(projectPath: String, block: ProjectDescriptor.() -> Unit = {}) {
+    include(projectPath)
+    project(projectPath).apply(block)
+}
+// </editor-fold>
