@@ -49,6 +49,7 @@ dependencies {
     implementation libs.kotlin.stdlib.jdk8
     implementation libs.kotlinx.coroutines.jdk8
     implementation libs.androidx.core.ktx.legacy
+    implementation libs.androidx.core.ktx
     implementation libs.condom
     implementation libs.okhttp
     implementation libs.okhttp.urlconnection

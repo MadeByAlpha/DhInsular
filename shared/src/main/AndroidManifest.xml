@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERACT_ACROSS_PROFILES" />
     <uses-permission android:name="android.permission.GET_APP_OPS_STATS" tools:ignore="ProtectedPermissions" /> <!-- AppOpsCompat -->
     <uses-permission android:name="${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- IslandWatcher -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application android:name="com.oasisfeng.island.IslandApplication" tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon">
 
@@ -30,6 +32,30 @@
         <provider android:authorities="${applicationId}.shuttle" android:exported="false"
                   android:name="com.oasisfeng.island.shuttle.ShuttleProvider" android:grantUriPermissions="true"
                   android:directBootAware="true" />
+
+        <receiver android:name="com.oasisfeng.island.watcher.IslandWatcher" android:enabled="@bool/since_api_28" tools:targetApi="28"
+            android:directBootAware="true" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.USER_INFO_CHANGED" /> <!-- Registered only -->
+                <action android:name="android.app.action.NOTIFICATION_CHANNEL_BLOCK_STATE_CHANGED" />
+                <action android:name="android.app.action.APP_BLOCK_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.oasisfeng.island.watcher.IslandWatcher$IslandDeactivationService" android:directBootAware="true"
+            android:foregroundServiceType="shortService" tools:targetApi="28" />
+
+        <receiver android:name="com.oasisfeng.island.watcher.IslandAppWatcher" android:enabled="@bool/since_api_26" android:directBootAware="true"
+            android:exported="false" tools:targetApi="26">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <provider android:name="com.oasisfeng.island.watcher.IslandAppWatcher$AppStateTracker" android:authorities="${applicationId}.watcher"
+                  android:exported="false" android:enabled="@bool/since_api_26" android:directBootAware="true" tools:targetApi="26" />
 
     </application>
 

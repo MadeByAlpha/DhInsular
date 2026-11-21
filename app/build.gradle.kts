@@ -35,8 +35,8 @@ android {
             keyPassword = providers.gradleProperty("signing.key.productionOSS").orNull
             enableV1Signing = false
 
-            storeFile = file(providers.gradleProperty("signing.keyStore.path"))
-            storePassword = providers.gradleProperty("signing.keyStore.password").get()
+            storeFile = providers.gradleProperty("signing.keyStore.path").orNull?.let(::file)
+            storePassword = providers.gradleProperty("signing.keyStore.password").orNull
         }
     }
 
@@ -68,7 +68,6 @@ dependencies {
     implementation(project(":deagle"))
     implementation(project(":engine"))
     implementation(project(":installer"))
-    implementation(project(":watcher"))
     implementation(project(":open"))
 
     implementation(libs.kotlin.stdlib.jdk8)

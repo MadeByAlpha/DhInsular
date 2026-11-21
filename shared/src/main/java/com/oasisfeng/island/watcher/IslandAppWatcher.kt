@@ -25,6 +25,7 @@ import com.oasisfeng.android.util.Apps
 import com.oasisfeng.island.api.Api
 import com.oasisfeng.island.notification.NotificationIds
 import com.oasisfeng.island.notification.post
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.util.DPM
 import com.oasisfeng.island.util.DevicePolicies
 import com.oasisfeng.pattern.PseudoContentProvider

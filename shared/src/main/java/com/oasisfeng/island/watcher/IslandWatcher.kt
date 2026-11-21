@@ -39,6 +39,7 @@ import com.oasisfeng.island.IslandNameManager
 import com.oasisfeng.island.home.HomeRole
 import com.oasisfeng.island.notification.NotificationIds
 import com.oasisfeng.island.notification.post
+import com.oasisfeng.island.shared.R
 import com.oasisfeng.island.shuttle.Shuttle
 import com.oasisfeng.island.util.DPM
 import com.oasisfeng.island.util.DevicePolicies
